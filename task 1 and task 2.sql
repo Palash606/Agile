@@ -137,6 +137,17 @@
 -- SET Email = 'palash@email.com', Address = 'Indore'
 -- WHERE CustomerID = 1;
 
+-- 8 -- 
+-- UPDATE Orders o -- 
+-- JOIN ( -- 
+--   SELECT od.OrderID, SUM(od.Quantity * p.Price) AS TotalCost -- 
+--    FROM OrderDetails od -- 
+--    JOIN Products p ON od.ProductID = p.ProductID -- 
+--    GROUP BY od.OrderID ) --
+-- AS calculatedTotals --
+-- ON o.OrderID = calculatedTotals.OrderID --
+-- SET o.TotalAmount = calculatedTotals.TotalCost; --
+
 -- 9 --
 -- DELETE FROM OrderDetails
 -- WHERE OrderID IN (SELECT OrderID FROM Orders WHERE CustomerID = 1);
@@ -147,6 +158,12 @@
 -- 10 --
 -- INSERT INTO Products (ProductName, Description, Price) 
 -- VALUES ('IPhone 16', 'Iphone', 2000);
+
+-- 11 -- 
+-- ALTER TABLE Orders ADD Status VARCHAR(50) DEFAULT 'Pending';
+-- UPDATE Orders
+-- SET Status = 'Pending'
+-- WHERE OrderID = 1;
 
 -- 12 --
 -- ALTER TABLE Customers ADD NumberOfOrders INT DEFAULT 0;
