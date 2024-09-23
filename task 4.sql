@@ -53,11 +53,10 @@
 -- LIMIT 1;
 
 -- 9 --  to calculate the average order value for all customers. 
--- SELECT c.CustomerID, c.FirstName, c.LastName, 
---        SUM(o.TotalAmount) / COUNT(o.OrderID) AS AverageOrderValue
--- FROM Customers c
--- JOIN Orders o ON c.CustomerID = o.CustomerID
--- GROUP BY c.CustomerID, c.FirstName, c.LastName;
+SELECT c.CustomerID, c.FirstName, c.LastName, AVG(o.TotalAmount) AS AverageOrderValue
+FROM Customers c
+JOIN Orders o ON c.CustomerID = o.CustomerID
+GROUP BY c.CustomerID, c.FirstName, c.LastName;
 
 -- 10 --  to find the total number of orders placed by each customer and list their names along with the order count.
 -- SELECT c.CustomerID, c.FirstName, c.LastName, COUNT(o.OrderID) AS OrderCount
